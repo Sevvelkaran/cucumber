@@ -33,40 +33,39 @@ public class dashboard {
     }
 
     @When("Assert the name Dashboard {string}")
-    public void assert_the_name_dashboard(String expectedDashboardText) {
+    public void assert_the_name_dashboard(String dashboard) {
         WebElement dash = driver.findElement(By.xpath("//h6[text()='Dashboard']"));
-        assertEquals(dash.getText(), expectedDashboardText);
+        assertEquals(dash.getText(), dashboard);
     }
 
     @Then("the user asserts all the quick Action {string}")
     public void the_user_asserts_all_the_quick_action(String quickAction) {
-        String actualText = "";
-        String expectedText = quickAction;
+        String act = "";
+        String exp = quickAction;
 
         switch (quickAction) {
             case "Assign Leave":
-                actualText = driver.findElement(By.xpath("//p[text()='Assign Leave']")).getText();
+                act = driver.findElement(By.xpath("//p[text()='Assign Leave']")).getText();
                 break;
             case "Leave List":
-                actualText = driver.findElement(By.xpath("//p[text()='Leave List']")).getText();
+                act = driver.findElement(By.xpath("//p[text()='Leave List']")).getText();
                 break;
             case "Timesheets":
-                actualText = driver.findElement(By.xpath("//p[text()='Timesheets']")).getText();
+                act = driver.findElement(By.xpath("//p[text()='Timesheets']")).getText();
                 break;
             case "Apply Leave":
-                actualText = driver.findElement(By.xpath("//p[text()='Apply Leave']")).getText();
+                act = driver.findElement(By.xpath("//p[text()='Apply Leave']")).getText();
                 break;
             case "My Leave":
-                actualText = driver.findElement(By.xpath("//p[text()='My Leave']")).getText();
+                act = driver.findElement(By.xpath("//p[text()='My Leave']")).getText();
                 break;
             case "My Timesheet":
-                actualText = driver.findElement(By.xpath("//p[text()='My Timesheet']")).getText();
+                act = driver.findElement(By.xpath("//p[text()='My Timesheet']")).getText();
                 break;
-            default:
-                throw new IllegalArgumentException("Invalid quick action: " + quickAction);
+ 
         }
 
-        assertEquals(actualText, expectedText);
+        assertEquals(act, exp);
     }
     
     @After
