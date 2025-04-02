@@ -10,17 +10,26 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.*;
 
 public class SauseDemoLogin {
-	
+	WebDriver driver;
+@Before
 
-    WebDriver driver = new FirefoxDriver();
+public void before() {
+	
+     driver = new FirefoxDriver();
+
+	  driver.manage().window().maximize();
+      driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+	
+}
 	@Given("Iam in the SauseDemo Login Page")
 	public void iam_in_the_sause_demo_login_page() {
 	  
-		  driver.manage().window().maximize();
-	        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		
 
 	        driver.get("https://www.saucedemo.com");
 	}
@@ -105,7 +114,10 @@ public void i_want_to_see_error_message_of_no_password() {
 	assertEquals(Orginal, Expected);
 }
 
-
+@After
+public void close() {
+	driver.quit();
+}
 
 
 }
