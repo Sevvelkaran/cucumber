@@ -4,6 +4,7 @@
   <artifactId>Cucumber</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   
+  
   <name>Cucumber</name>
   <url>http://www.example.com</url>
 
@@ -147,6 +148,16 @@
           </suiteXmlFiles>
         </configuration>
       </plugin>
+      <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-plugin</artifactId>
+    <version>3.5.2</version>
+    <configuration>
+        <testFailureIgnore>false</testFailureIgnore>
+        <failIfNoTests>true</failIfNoTests>
+    </configuration>
+</plugin>
+
     </plugins>
   </build>
 
