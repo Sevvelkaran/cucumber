@@ -16,9 +16,9 @@ import io.cucumber.java.en.*;
 
 public class SauseDemoLogin {
 	WebDriver driver;
-@Before
+    @Before
 
-public void before() {
+     public void Beforesetup() {
 	
      driver = new FirefoxDriver();
 
@@ -29,8 +29,6 @@ public void before() {
 	@Given("Iam in the SauseDemo Login Page")
 	public void iam_in_the_sause_demo_login_page() {
 	  
-		
-
 	        driver.get("https://www.saucedemo.com");
 	}
 
