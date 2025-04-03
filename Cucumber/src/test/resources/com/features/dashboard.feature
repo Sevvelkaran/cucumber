@@ -21,11 +21,12 @@
 Feature: Title of your feature
   I want to use this template for my feature file
   
-Background:
-    Given I want to Assert the dashboard
+
 
   @tValidate
   Scenario Outline: Title of your scenario
+      Given I want to Assert the dashboard
+  
     		When The user enters username as "<username>" and Password as "<password>"
     And Assert the name Dashboard "<Dashboard>"
     Then the user asserts all the quick Action "<QuickAction>"
