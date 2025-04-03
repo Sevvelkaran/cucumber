@@ -33,16 +33,16 @@ public void user_enters_valid_credentials(io.cucumber.datatable.DataTable dataTa
 //    List<List<String>> signUpForm=dataTable.asLists(String.class);
 	List<Map<String, String> > user = dataTable.asMaps(String.class, String.class);
 	for(Map<String, String> from : user) {
-    String Username=user.get(0).get("Username");
+    String Username=from.get("Username");
     System.out.println("Username : "+ Username);
     driver.findElement(By.name("username")).sendKeys(Username);
 
-    String Password=user.get(0).get("Password");
+    String Password=from.get("Password");
     System.out.println("Password : "+ Password);
     driver.findElement(By.name("password")).sendKeys(Password);
     driver.findElement(By.xpath("//button[@class=\"oxd-button oxd-button--medium oxd-button--main orangehrm-login-button\"]")).submit();
     
-    String errorMessage = user.get(0).get("ErrorMessage");
+    String errorMessage = from.get("ErrorMessage");
     String actualMeassage = driver.findElement(By.xpath("//*[@class = 'orangehrm-login-error']/div[1]/div[1]/p")).getText();
     System.out.println("ActualErrorMeassage  :"+actualMeassage);
     
