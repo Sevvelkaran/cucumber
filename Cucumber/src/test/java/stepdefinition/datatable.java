@@ -29,26 +29,26 @@ public void the_user_is_on_orange_hrm() {
 @When("User enters valid credentials")
 public void user_enters_valid_credentials(io.cucumber.datatable.DataTable dataTable)throws InterruptedException {
 
-	System.out.println("Credentials Entered");
+	//System.out.println("Credentials Entered");
 //    List<List<String>> signUpForm=dataTable.asLists(String.class);
-	
 	List<Map<String, String> > user = dataTable.asMaps(String.class, String.class);
-    String Username=user.get(0).get("Username");
+	for(Map<String, String> from : user) {
+    String Username=from.get("Username");
     System.out.println("Username : "+ Username);
     driver.findElement(By.name("username")).sendKeys(Username);
 
-    String Password=user.get(0).get("Password");
+    String Password=from.get("Password");
     System.out.println("Password : "+ Password);
     driver.findElement(By.name("password")).sendKeys(Password);
     driver.findElement(By.xpath("//button[@class=\"oxd-button oxd-button--medium oxd-button--main orangehrm-login-button\"]")).submit();
     
-    String errorMessage = user.get(0).get("ErrorMessage");
+    String errorMessage = from.get("ErrorMessage");
     String actualMeassage = driver.findElement(By.xpath("//*[@class = 'orangehrm-login-error']/div[1]/div[1]/p")).getText();
     System.out.println("ActualErrorMeassage  :"+actualMeassage);
     
     assertTrue(actualMeassage.equalsIgnoreCase(errorMessage));
 }
-	
+}
 
 
 
