@@ -29,10 +29,10 @@ public void the_user_is_on_orange_hrm() {
 @When("User enters valid credentials")
 public void user_enters_valid_credentials(io.cucumber.datatable.DataTable dataTable)throws InterruptedException {
 
-	System.out.println("Credentials Entered");
+	//System.out.println("Credentials Entered");
 //    List<List<String>> signUpForm=dataTable.asLists(String.class);
-	
 	List<Map<String, String> > user = dataTable.asMaps(String.class, String.class);
+	for(Map<String, String> from : user) {
     String Username=user.get(0).get("Username");
     System.out.println("Username : "+ Username);
     driver.findElement(By.name("username")).sendKeys(Username);
@@ -48,7 +48,7 @@ public void user_enters_valid_credentials(io.cucumber.datatable.DataTable dataTa
     
     assertTrue(actualMeassage.equalsIgnoreCase(errorMessage));
 }
-	
+}
 
 
 

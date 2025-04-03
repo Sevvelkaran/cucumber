@@ -26,6 +26,7 @@ Feature: Data Table
     When User enters valid credentials
       | Username | Password | ErrorMessage         |
       | Admin11  | adfaf    | Invalid credentials  |
+      | Admi     | asdfghj  | Invalid credentials  |
 
     #Then user should be able to login sucessfully and new page open
 
